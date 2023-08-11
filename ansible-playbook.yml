@@ -16,7 +16,7 @@
     become : yes
     become_user : root
 
-  - name : Stop the http_server1 container
+  - name : Stop the http_serverl container
     docker_container:
       name: finance-me
       state: stopped
