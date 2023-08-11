@@ -17,7 +17,7 @@
     become_user : root
 
   - name: Stop Docker container
-      docker_container:
+      docker_container :
         name: sivaops7/finance-me
         state: stopped
         
