@@ -16,10 +16,10 @@
     become : yes
     become_user : root
 
-  - name : Stop the http_serverl container
-    command: docker stop sivaops7/finance-me
-    become : yes
-    become_user : root
-
+  - name: Stop Docker container
+      docker_container:
+        name: sivaops7/finance-me
+        state: stopped
+        
   - name: Deploy Docker Container
     command: docker run -itd -p 8086:8081 sivaops7/finance-me:1.0
