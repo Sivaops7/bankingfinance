@@ -8,9 +8,18 @@
 
   - name : Install Docker
     command : sudo apt-get install -y docker.io
+    become : yes
+    become_user : root
 
   - name : Start Docker Service
     command : sudo systemctl start docker
+    become : yes
+    become_user : root
+
+  - name : Stop the http_server1 container
+    docker_container:
+      name: finance-me
+      state: stopped
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8086:8081 sivaops7/finance-me:1.0
