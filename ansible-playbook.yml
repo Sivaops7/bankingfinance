@@ -29,10 +29,16 @@
       become_user: root
 
 - name: Deploy Docker Container
-  command: docker run -itd -p 8086:8081 sivaops7/finance-me:1.0
+  hosts: your_target_host
+  tasks:
+    - name: Run Docker Container
+      become: yes
+      become_user: root
+      shell: docker run -itd -p 8086:8081 sivaops7/finance-me:1.0
 
-- name: Stop Docker container
-  community.general.docker_container:
-    name: sivaops7/finance-me
-    state: stopped
-  notify: Restart Docker Service
+    - name: Stop Docker container
+      community.general.docker_container:
+        name: sivaops7/finance-me
+        state: stopped
+      notify: Restart Docker Service
+
