@@ -17,7 +17,7 @@
     become_user : root
 
   - name : Stop the http_serverl container
-    command: docker stop finance-me
+    command: docker stop sivaops7/finance-me
     become : yes
     become_user : root
 
